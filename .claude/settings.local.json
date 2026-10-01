@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\nodejs\",\"$env:LOCALAPPDATA\\\\Programs\\\\nodejs\",\"$env:APPDATA\\\\npm\" -ErrorAction SilentlyContinue | Select-Object -First 5 FullName; Get-Command winget -ErrorAction SilentlyContinue | Select-Object Source; Get-ChildItem -Force \"D:\\\\服飾\" | Select-Object Name)",
+      "PowerShell(foreach\\($c in 'python','python3','bun','deno','pnpm','yarn','npx'\\){ $x=Get-Command $c -ErrorAction SilentlyContinue; if\\($x\\){\"$c -> $\\($x.Source\\)\"} }; Get-ChildItem \"C:\\\\Users\\\\gtod0\\\\AppData\\\\Local\\\\Programs\" -ErrorAction SilentlyContinue | Select -First 20 Name; Test-Path \"$env:USERPROFILE\\\\.nvm\"; Test-Path \"$env:USERPROFILE\\\\scoop\")",
+      "PowerShell(winget install --id OpenJS.NodeJS.LTS -e --silent --accept-package-agreements --accept-source-agreements)",
+      "PowerShell($env:Path=\"C:\\\\Program Files\\\\nodejs;\"+$env:Path; cd D:\\\\服飾; node -v; npm install 2>&1 | Select-Object -Last 5; npx tsc --noEmit 2>&1 | Select-Object -First 40)",
+      "PowerShell($env:Path=\"C:\\\\Program Files\\\\nodejs;\"+$env:Path; cd D:\\\\服飾; npx tsc --noEmit; \"tsc exit $LASTEXITCODE\"; npm run build 2>&1 | Select-Object -Last 25)",
+      "WebSearch",
+      "WebFetch(domain:kimonoshitatesousou.com)",
+      "WebFetch(domain:yousai.net)",
+      "PowerShell(cd D:\\\\服飾; $f=\"$PWD\\\\lib\\\\garments\\\\outer.ts\"; $t=[IO.File]::ReadAllText\\($f\\).Replace\\('ストレッチ不要の伸び止めテープ\\(1cm幅\\)','伸び止めテープ\\(織物用・1cm幅\\)'\\); [IO.File]::WriteAllText\\($f,$t,\\(New-Object Text.UTF8Encoding\\($false\\)\\)\\))",
+      "WebFetch(domain:yousai-blog.com)",
+      "WebFetch(domain:sewingmachine.mobi)",
+      "WebFetch(domain:kikakurui.com)",
+      "PowerShell(cd D:\\\\服飾; $env:Path=\"C:\\\\Program Files\\\\nodejs;\"+$env:Path; npx tsx scripts/check.ts | Select -First 12; npx tsx scripts/fuzz.ts | Select -Last 4; Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue)",
+      "PowerShell(cd D:\\\\服飾; $env:Path=\"C:\\\\Program Files\\\\nodejs;\"+$env:Path; Test-Path .next; npx tsc --noEmit; \"tsc $LASTEXITCODE\"; \\(Select-String README.md -Pattern 'A4分割'\\).Count; npx tsx scripts/fuzz.ts | Select -Last 1)",
+      "PowerShell(\\(Select-String D:\\\\服飾\\\\package.json -Pattern 'check'\\).Line; Test-Path D:\\\\服飾\\\\.next)",
+      "WebFetch(domain:github.com)",
+      "PowerShell(Get-Command git -ErrorAction SilentlyContinue)",
+      "PowerShell($env:Path=[Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\)+\";\"+[Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); $g=Get-Command git -ErrorAction SilentlyContinue; if\\($g\\){$g.Source; git --version}else{\"git なし\"}; Test-Path \"D:\\\\服飾\\\\.git\"; if\\(Test-Path \"D:\\\\服飾\\\\.git\"\\){ Set-Location D:\\\\服飾; git remote -v; git log --oneline -3 })",
+      "PowerShell(winget install --id Git.Git -e --silent --accept-package-agreements --accept-source-agreements 2>&1)"
+    ]
+  }
+}
